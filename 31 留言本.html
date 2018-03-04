@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <input type="text" id="text1" value="请输入内容" />
+    <ul id="ul1"></ul>
+
+    <script src="js/EventUtil.js"></script>
+	<script>
+        var oText = document.getElementById('text1');
+
+        var oUl = document.getElementById('ul1');
+
+        
+
+        oText.onfocus = function() {
+
+        	if(this.value == '请输入内容') {
+
+        		this.value = '';
+        	}
+        }
+        oText.onblur = function() {
+
+        	if(this.value == '') {
+
+        		this.value = '请输入内容';
+        	}
+        }
+
+        oText.focus();   //默认获取焦点 用于焦点事件之后
+
+        oText.onkeyup = function(event) {
+
+        	// alert(this.value);
+        	event = getEvent(event);
+        	
+        	if(this.value != '') {
+                
+                if(event.keyCode == 13 && event.ctrlKey) {
+
+                	var oLi = document.createElement('li');
+
+	        		oLi.innerHTML = this.value;
+
+	        		if(oUl.children[0]) {
+
+	        			oUl.insertBefore(oLi, oUl.children[0]);
+
+	        		}else {
+
+	        			oUl.appendChild(oLi);
+	        		}
+	        		this.value = '';
+                }
+
+        	}
+
+        }
+
+
+	</script>
+</body>
+</html>

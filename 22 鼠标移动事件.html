@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #div1 {
+        	position: absolute;
+        	width: 100px;
+        	height: 100px;
+        	background-color: red;
+        }
+	</style>
+</head>
+<body style="height: 2000px">
+	<div id="div1"></div>
+
+	<script>
+        //onmousemove : 鼠标移动事件 -> 当鼠标在一个元素上面移动的时候触发
+        //              触发频率 -> 不是像素，而是时间间隔，在一个指定的时间内（很短），如果鼠标的位置和上一次的位置发生了变化，就会触发一次
+        
+        var i =0;
+
+        var oDiv = document.getElementById('div1');
+
+        document.onmousemove = function(ev) {
+
+            //document.title = i++;
+            
+            var ev = ev || event;
+
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            oDiv.style.left = ev.clientX + 'px';
+
+            oDiv.style.top = ev.clientY + scrollTop + 'px';
+        }
+	</script>
+</body>
+</html>

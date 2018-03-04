@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt" /><input type="button" value="留言" id="btn" />
+    <ul id="ul"></ul>
+	<script>
+        var oTxt = document.getElementById('txt'),
+            oBtn = document.getElementById('btn'),
+            oUl = document.getElementById('ul');
+
+        oBtn.onclick = function() {
+
+        	//document.createElement(要创建的标签名称);
+        	
+        	var oLi = document.createElement('li');
+
+        	//oLi.innerHTML = oTxt.value + '<a href="">删除</a>';
+        	oLi.innerHTML = oTxt.value;
+
+        	var oA = document.createElement('a');
+
+        	oA.innerHTML = '删除';
+
+        	oA.href = 'javascript:;';
+
+        	oA.onclick = function() {
+
+                //删除元素 父级.removeChild(要删除的元素); 
+                oUl.removeChild(this.parentNode);
+
+        	}
+            oLi.appendChild(oA);
+        	//添加到页面中 父级.appendChild() 方法 追加子元素
+        	
+        	//oUl.appendChild(oLi);
+        	
+        	//父级.insertBefore(新元素，目标元素)方法 —— 在指定的元素前面插入一个新元素
+        	//在IE下，如果第二个参数的节点不存在，会报错
+        	//在其他标准浏览器下如果第二个参数的节点不存在，则会以appendChild的形式进行添加
+        	
+        	// oUl.insertBefore(oLi, oUl.children[0]);
+        	if(oUl.children[0]) {
+
+        		oUl.insertBefore(oLi, oUl.children[0]);
+        	}else {
+
+        		oUl.appendChild(oLi, oUl.children[0]);
+        	}
+        }
+	</script>
+</body>
+</html>

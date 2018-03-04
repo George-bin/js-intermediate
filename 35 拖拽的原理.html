@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #div1 {
+        	position: absolute;
+        	width: 100px;
+        	height: 100px;
+        	background-color: red;
+        }
+	</style>
+</head>
+<body>
+    sasfafdf
+	<div id="div1"></div>
+	<div style="width: 100px; height: 100px; background: green; position: absolute; left: 400px; top: 200px;"></div>
+    
+    <script src="js/EventUtil.js"></script>
+	<script>
+        //onmousedown : 选择元素
+        //onmousemove ： 移动元素
+        //onmouseup ： 释放元素
+        
+        var oDiv = document.getElementById('div1');
+
+        oDiv.onmousedown = function(event) {
+             
+            event = getEvent(event);
+
+            var disX = event.clientX - this.offsetLeft;
+
+            var disY = event.clientY - this.offsetTop;
+
+            // oDiv.onmousemove = function(event) {
+            document.onmousemove = function(event) {
+        	    
+        	    event = getEvent(event);
+
+        	    oDiv.style.left = event.clientX - disX + 'px';
+
+        	    oDiv.style.top = event.clientY - disY + 'px';
+            }
+
+            document.onmouseup = function() {
+        	    // oDiv.onmousemove = null;
+        	    document.onmousemove = document.onmouseup = null;
+            }
+        }
+
+
+        
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height: 2000px">
+    <div id="div1" style="width: 100px; height:100px; padding: 10px; margin: 10px; border: 1px solid red">
+        <div style="width: 100px; height: 200px; background-color: orange"></div>
+
+    </div>
+	<script>
+	    var oDiv = document.getElementById('div1');
+	    //可视区的尺寸
+        //document.documentElement.clientWidth
+        //document.documentElement.clientHeight
+        
+        // alert(document.documentElement.clientWidth);
+        
+
+        document.onclick = function() {
+
+        	//滚动条滚动距离
+        	//document.documentElement.scrollTop[scrollLeft]
+        	//    chrome: document.body.scrollTop[scrollLeft]
+        	//    其他: document.documentElement.scrollTop[scrollLeft]
+        	
+        	// alert(document.documentElement.scrollTop);
+        	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        	// alert(scrollTop);
+        	
+        	//内容高  Element.scrollHeight()
+        	//出边框外的实际内容高度（包括padding）
+        	// alert(oDiv.scrollHeight);
+        	//document.body.offsetHeight
+        	//alert(document.body.offsetHeight);   //推荐使用 —— 获取内容高
+
+        	// 文档高度
+        	//document.documentElement.offsetHeight
+        	//Element.offsetHeight
+        	//alert(document.documentElement.offsetHeight);
+        	
+        }
+        
+
+        //窗口事件
+        //onscroll : 当滚动条滚动的时候触发
+        //onresize : 当窗口大小发生改变的时候触发
+        
+        var i = 0;
+        window.onscroll = function() {
+            //在一定的时间内触发一次
+        	// document.title = i++;
+        }
+
+        window.onresize = function() {
+
+        	 //在一定的时间内触发一次
+        	document.title = i++;
+        }
+	</script>
+</body>
+</html>

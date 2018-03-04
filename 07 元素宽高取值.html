@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1" style="width: 100px; height: 100px; padding: 10px; margin: 10px; border: 1px solid red;"></div>
+
+	<script>
+        var oDiv = document.getElementById('div1');
+        
+        //width height
+
+        //元素.style.width(样式宽) —— 无兼容问题
+        
+        //元素.clientWidth(可视宽度)
+        
+        //元素.offsetWidth(占位宽)
+
+        // alert(oDiv.style.width);  //'100px' —— 样式宽
+
+        // alert(oDiv.clientWidth);     //'120'   —— 样式宽 + padding
+        
+        alert(oDiv.offsetWidth);        //'122'  —— 样式宽 + padding + border
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1111<span></span></li>
+		<li>2222</li>
+		<li>3333</li>
+		<li>4444</li>
+	</ul>
+	<script>
+        //元素.children属性  只读属性，子节点列表集合 —— 推荐使用
+
+            //标准下：只包含元素类型的节点，也会包含非法嵌套子节点
+
+            //非标准下：只包含了元素类型的节点，IE7以下不包含非法嵌套子节点
+        
+        var oUl = document.getElementById('ul1');
+
+        alert(oUl.children.length);      //4 只包含元素节点
+
+        for(var i=0, len=oUl.children.length; i<len; i++) {
+
+        	oUl.children[i].style.background = 'red';
+
+        }
+	</script>
+</body>
+</html>

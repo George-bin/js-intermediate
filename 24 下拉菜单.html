@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #div1 {
+        	width: 100px;
+        	height: 200px;
+        	border: 1px solid red;
+        	display: none;
+        }
+	</style>
+</head>
+<body>	
+	<input type="button" id="btn" value="按钮" />
+	<div id="div1"></div>
+	<p>1111</p>
+	<p>2222</p>
+	<p>3333</p>
+	<p>4444</p>
+
+	<script>
+	    //阻止冒泡 —— 当前要阻止冒泡的事件函数中调用return false;
+	    //            event.cancelBubble = true;
+	    
+        var oBtn = document.getElementById('btn');
+            oDiv = document.getElementById('div1');
+
+        oBtn.onclick = function(ev) {
+            // alert(0);
+            var ev = ev || event;
+
+            ev.cancelBubble = true;  //阻止当前对象的当前事件的冒泡
+        	oDiv.style.display = 'block';
+        }
+
+        oBtn.onmousemove = function(ev) {
+
+        	var ev = ev || event;
+
+            ev.cancelBubble = true;  //阻止当前对象的当前事件的冒泡
+        }
+
+        document.onclick = function() {
+        	setTimeout(function() {
+
+        		oDiv.style.display = 'none';
+        	},1000)
+        	
+        }
+	</script>
+</body>
+</html>

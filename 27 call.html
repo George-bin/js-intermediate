@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+        //call : 函数下的一个方法
+        //     call()方法第一个参数可以改变函数执行过程中内部this的指向
+        //     call()方法第二个参数就是原理函数的参数列表
+        
+        function fn1() {
+        	alert(this);
+        }
+        
+        // fn1();    //window
+        fn1.call();  //调用函数 fn1() == fn.call()
+	</script>
+</body>
+</html>

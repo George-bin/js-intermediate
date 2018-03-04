@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       #div1 {
+       	   position: absolute;
+       	   width: 100px;
+       	   height: 100px;
+       	   background-color: red;
+       }
+	</style>
+</head>
+<body style="height: 2000px;">
+	<div id="div1"></div>
+    
+    <script src="js/EventUtil.js"></script>
+	<script>
+	    //鼠标滚轮事件
+	    //   ie/chrome -> onmousewheel
+	    //       event.wheelDelta
+	    //          上：120
+	    //          下：-120
+	    //   ff -> DOMMouseScroll  必须用addEventListener事件绑定
+	    //       event.detail
+	    //          上：-3
+	    //          下： 3
+	    
+
+	    //return fasle 阻止的是 obj.on事件名称 = fn所触发的默认行为
+	    //addEventListener绑定的事件需要event下面的preventDefault();
+        var oDiv = document.getElementById('div1');
+
+        oDiv.onmousewheel = fn;
+        if(oDiv.addEventListener) {   //解决非标准IE下的错误
+        	oDiv.addEventListener('DOMMouseScroll', fn, false);
+        }
+        
+
+        function fn(event) {
+        	// alert(1);
+        	event = getEvent(event);
+
+            var b = true;
+
+            if(event.wheelDelta) {
+
+            	b = event.wheelDelta > 0 ? true : false;
+            }else {
+
+            	b = event.detail < 0 ? true : false;
+            }
+
+            if(b) {
+
+            	this.style.height = this.offsetHeight - 10 + 'px'; 
+            }else {
+            	this.style.height = this.offsetHeight + 10 + 'px';
+            }
+        	if(event.preventDefault) { //addEventListener绑定的事件需要event下面的preventDefault();
+        		event.preventDefault();
+        	}
+        	return false;
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+        	padding: 40px 50px;
+        }
+        #div1 { background: red; }
+        #div2 { background: blue; }
+        #div3 { background: orange; }
+	</style>
+</head>
+<body>
+	<!-- <ul id="ul1">
+		<li>1111<a href="javascript:;">隐藏</a></li>
+		<li>2222<a href="javascript:;">隐藏</a></li>
+		<li>3333<a href="javascript:;">隐藏</a></li>
+		<li>4444<a href="javascript:;">隐藏</a></li>
+	</ul> -->
+
+	<div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+	</div>
+	<script>
+        var oUl = document.getElementById('ul1');
+
+        var aA = document.getElementsByTagName('a');
+
+        for(var i=0; i<aA.length; i++) {
+
+        	aA[i].onclick = function() {
+
+        		//parentNode: 只读 属性 当前节点的父节点 —— 无兼容问题
+        		
+        		this.parentNode.style.display = 'none';
+        	}
+        }
+
+
+        //offsetParent   离当前元素最近的一个有定位属性的父节点
+        //1、如果没有定位父级，默认是body
+        //2、IE7以下，如果当前元素没有定位默认是body，如果有定位是HTML
+        //3、IE7以下，如果当前元素的某个父级出发了layout，那么offsetParent就会指向到这个出发了layout特性的父节点
+        var oDiv3 = document.getElementById('div3');
+
+        alert(oDiv3.parentNode.id);
+        
+
+        
+	</script>
+</body>
+</html>

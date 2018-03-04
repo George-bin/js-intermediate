@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <input type="button" value="打开新窗口" />
+    <input type="button" value="关闭窗口" />
+    <input type="button" value="关闭新窗口" />
+	<script>
+        //BOM : Browser Object Model 浏览器对象模型
+        
+        var aInp = document.getElementsByTagName('input');
+
+        var opener = null;
+
+        //open(页面的URL，打开的方式) 方法 打开一个新的窗口（页面）
+        //    如果URL为空，默认打开一个空白页面
+        //    如果打开方式为空，默认为新窗口方式
+        //返回值：返回新打开的窗口的window对象
+        aInp[0].onclick = function() {
+
+             opener = window.open('http://www.baidu.com', '_blank');
+            //_self 表示在本窗口打开 _blank表示在新窗口打开
+            
+            // opener = window.open();
+            //opener.document.body.style.background = 'red';
+
+            //alert(opener == window);  //flase  opener代表新打开的窗口的window对象
+        }
+
+        //close() 方法 关闭窗口
+        aInp[1].onclick = function() {
+
+        	window.close();
+        	//1、ff: 默认无法关闭
+        	//2、chorme: 默认直接关闭
+        	//3、IE: 询问用户
+        }
+        
+        //关闭新窗口——可以关闭在本窗口中通过JS方法打开的新窗口
+        aInp[2].onclick = function() {
+
+        	opener.close();
+        }
+	</script>
+</body>
+</html>

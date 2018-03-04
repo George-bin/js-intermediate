@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        table {
+        	border-collapse: collapse;;
+        }
+        td {
+        	text-align: center;
+        	letter-spacing: 2px;
+        }
+	</style>
+</head>
+<body>
+	<table id="tab1" width="100%" border="1px">
+	    <thead>
+            <tr>
+            	<th>编号</th>
+            	<th>姓名</th>
+            	<th>性别</th>
+            	<th>操作</th>
+            </tr>
+	    </thead>
+	    <tbody>
+            <!-- <tr>
+	            <td>1</td>
+	            <td>George</td>
+	            <td>男</td>
+	            <td><a href="javascript:;">删除</a></td>
+	        </tr>
+	        <tr>
+	            <td>2</td>
+	            <td>小羽</td>
+	            <td>女</td>
+	            <td><a href="javascript:;">删除</a></td>
+	        </tr> -->
+	    </tbody>
+        
+	</table>
+	<script>
+        var oTab = document.getElementById('tab1');
+
+        var oTbody = oTab.tBodies[0];
+
+        var data = [
+            
+            {id:1,username:'George',sex:'男'},
+            {id:2,username:'小羽',sex:'女'},
+            {id:3,username:'李娜',sex:'女'},
+            {id:4,username:'王亮',sex:'男'}
+        ];
+
+        for(var i=0; i<data.length; i++) {
+
+            var oTr = document.createElement('tr');
+
+            var oTd = document.createElement('td');
+
+            oTd.innerHTML = data[i].id;
+
+            oTr.appendChild(oTd);
+
+            if(i % 2 == 0) {
+
+            	oTr.style.background = '#ddd';
+            }else {
+            	oTr.style.background = 'white';
+            }
+
+
+            oTd = document.createElement('td');
+
+            oTd.innerHTML = data[i].username;
+
+            oTr.appendChild(oTd);
+
+
+            oTd = document.createElement('td');
+
+            oTd.innerHTML = data[i].sex;
+
+            oTr.appendChild(oTd);
+
+
+            oTd = document.createElement('td');
+
+            // oTd.innerHTML = '&nbsp';
+            var oA = document.createElement('a');
+            oA.innerHTML = '删除';
+            oA.href = 'javascript:;';
+            oTd.appendChild(oA);
+
+            oA.onclick = function() {
+
+            	oTbody.removeChild(this.parentNode.parentNode);
+                //调用删除项的父级
+                
+                for(var i=0, len=oTbody.rows.length; i<len; i++) {
+
+                	if(i % 2 == 0) {
+
+		            	oTbody.rows[i].style.background = '#ddd';
+		            }else {
+		            	oTbody.rows[i].style.background = 'white';
+		            }
+                }
+            }
+
+            oTr.appendChild(oTd);
+
+
+
+            oTbody.appendChild(oTr);
+
+           
+        }
+
+        //tHead     表格头
+        //tBodies   表格正文
+        //tFoot     表格尾
+        //    rows    行
+        //    cells   列
+        
+        // alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+	</script>
+</body>
+</html>

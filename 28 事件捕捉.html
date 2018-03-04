@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+        	padding: 40px;
+        }
+        #div1 {
+        	background-color: red;
+        }
+        #div2 {
+        	background-color: green;
+        }
+        #div3 {
+        	background-color: blue;
+        }
+	</style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+	<script>
+        //事件捕捉 : 
+        
+        var oDiv1 = document.getElementById('div1'),
+            oDiv2 = document.getElementById('div2'),
+            oDiv3 = document.getElementById('div3');
+
+        function fn() {
+
+        	alert(this.id);
+        }
+        //oDiv1.onclick = fn;  //给**加事件，给元素加事件处理函数
+        //事件函数绑定
+        
+        //告诉oDiv1，如果有一个出去的事件触发了你，你就去执行它
+        // oDiv1.addEventListener('click', fn, false);
+        // oDiv2.addEventListener('click', fn, false);
+        // oDiv3.addEventListener('click', fn, false);
+        
+        //告诉oDiv1，如果有一个进去的事件触发了你，你就去执行它
+        oDiv1.addEventListener('click', fn, true);
+        oDiv2.addEventListener('click', fn, true);
+        oDiv3.addEventListener('click', fn, true);
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #div1 {
+        	position: absolute;
+        	width: 100px;
+            height: 100px;
+            background: red;
+        }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+
+    <script src="js/EventUtil.js"></script>
+	<script>
+        var oDiv = document.getElementById('div1');
+
+        //不是所有的元素都能接收键盘事件，能够响应用户输入的元素，能够接收焦点的元素就能接收键盘事件
+        
+        //onkeydown : 如果按下不抬起，那么就会连续触发
+        
+        document.onkeydown = function(event) {
+
+        	event = getEvent(event);
+
+        	switch(event.keyCode) {
+
+        		case 37:
+        		    oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+        		    break;
+        		case 38:
+        		    oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+        		    break;
+        		case 39:
+        		    oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+        		    break;
+        		case 40:
+        		    oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+        		    break;
+
+        	}
+        }
+	</script>
+</body>
+</html>

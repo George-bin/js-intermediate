@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+        	padding: 40px 50px;
+        }
+        #div1 { background: red; }
+        #div2 { background: blue; }
+        #div3 { background: orange; }
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+	</div>
+	<script>
+         //offsetLeft、offsetTop
+         
+         var oDiv3 = document.getElementById('div3');
+
+         //offsetLeft[Top] : 只读 属性 当前元素到定位父级的距离（偏移值）
+         
+         //到当前元素的offsetParent的距离
+         
+         //如果没有定位父级：
+         //    offsetParent -> body
+         //    offsetLeft -> html(整个文档)
+         
+
+         //如果有定位父级：
+         //    IE7以下：如果自己没有定位，那么offsetLeft[top]是到body的距离；如果当前元素有定位，那么offsetLeft[top]是到有定位父级的距离
+         //    其他：到定位父级的距离
+         
+         alert(oDiv3.offsetLeft);
+	</script>
+</body>
+</html>

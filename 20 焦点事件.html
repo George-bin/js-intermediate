@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="text1" id="text1" value="请输入内容" />
+	<input type="button" value="全选" name="btn" id="btn" />
+
+
+	<script>
+        var oText = document.getElementById('text1');
+
+        //element.onfocus : 当元素获取到焦点的时候触发
+        oText.onfocus = function() {
+            
+            if(this.value == '请输入内容') {
+ 
+                this.value = '';
+            }
+        	
+        }
+
+        //element.onblur : 当元素失去焦点的时候触发
+        oText.onblur = function() {
+
+        	if(this.value == '') {
+
+        		this.value = '请输入内容';
+        	}
+        }
+
+        //element.focus() 方法 -> 给指定的元素设置焦点
+
+        //element.blur() 方法 -> 取消指定元素的焦点
+
+        //element.select() 方法 -> 选择指定的元素里面的内容
+        //   只能操作交互性元素
+        oText.focus();
+
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function() {
+
+        	oText.select();
+        }
+	</script>
+</body>

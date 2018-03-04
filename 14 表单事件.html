@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="form1" action="">
+        <input type="text" name="text1" value="hello" />
+
+        <!-- radio单选按钮  name属性值必须一致  表示同一组 -->
+        <input type="radio" name="sex" id="boy" value="男" /><label for="boy">男</label>
+        <input type="radio" name="sex" id="girl" value="女" /><label for="girl">女</label>
+
+
+        <input type="checkbox" name="a" id="html" value="html" /><label for="html">HTML</label>
+        <input type="checkbox" name="a" id="js" value="javascript" /><label for="js">JS</label>
+        <input type="checkbox" name="a" id="css" value="css" /><label for="css">CSS</label>
+
+        <select name="city" value="" id="">
+            <option value="">请选择城市</option>
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="银川" selected>银川</option>
+            <!-- selected特性 表示默认选中 -->
+        </select>
+
+        <input type="button" name="btn" id="btn" value="按钮" />
+	</form> 
+	<script>
+        var oForm = document.getElementById('form1');
+
+        //alert(oForm.text1.value);  //兼容   name值更实用——操作表单元素
+        
+        // onchange : 当值发生改变时触发
+        //    text : 当光标离开时如果内容有变化就触发
+        //    radio: 标准下只要值改变就会触发
+        //           非标准下只要焦点离开的时候如果值改变就会触发
+        //    checkbox: 标准下只要值改变就会触发
+        //           非标准下只要焦点离开的时候如果值改变就会触发
+        oForm.text1.onchange = function() {
+
+        	alert(this.value);
+
+        }
+        
+        //oForm.name.value 
+        //      name值代表一组单选按钮  对应索引值0,1,2 ex: sex[0]
+        oForm.sex[0].onchange = function() {
+
+        	alert(this.value);
+        }
+
+        //oForm.name.value 
+        //      name值代表一组单选按钮  对应索引值0,1,2 ex: sex[0]
+        oForm.a[0].onchange = function() {
+
+        	alert(0);
+        }
+
+        // alert(oForm.city);
+        oForm.city.onchange = function() {
+
+        	alert(this.value);
+        }
+        
+        //checked 代表是否被选中  ture表示选中  false 表示未选中
+        oForm.btn.onclick = function() {
+
+        	// alert(oForm.sex[0].checked);
+        	for(var i=0; i<oForm.sex.length; i++) {
+
+        		if(oForm.sex[i].checked) {
+
+        			alert(oForm.sex[i].value + ' 被选中了！');
+        		}else {
+
+        			alert(oForm.sex[i].value + ' 没有被选中！');
+        		}
+        	}
+
+        	for(var i=0; i<oForm.a.length; i++) {
+
+        		if(oForm.a[i].checked) {
+
+        			alert(oForm.a[i].value + ' 被选中了！');
+        		}else {
+
+        			alert(oForm.a[i].value + ' 没有被选中！');
+        		}
+        	}
+        }
+	</script>
+</body>
+</html>

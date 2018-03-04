@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        #div1 {
+        	position: absolute;
+        	left: -100px;
+        	top: 100px;
+        	width: 100px;
+        	height: 200px;
+        	background-color: red;
+        }
+        #div2 {
+        	position: absolute;
+            top: 70px;
+            right: -30px;
+        	width: 30px;
+        	height: 65px;
+        	font-size: 16px;
+        	text-align: center;
+        	color: white;
+        	background-color: black;
+        }
+	</style>
+</head>
+<body>
+	<div id="div1">
+        <div id="div2">分享到</div>
+	</div>
+	<script>
+        var oDiv1 = document.getElementById('div1');
+
+        //利用父级充分利用冒泡机制
+
+        oDiv1.onmousemove = function() {
+
+        	this.style.left = '0px';
+        }
+
+        oDiv1.onmouseout = function() {
+
+        	this.style.left = '-100px';
+        }
+
+	</script>
+</body>
+</html>
